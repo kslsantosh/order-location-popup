@@ -13,13 +13,13 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import com.santosh.orderlocationpopup.constants.KafkaConstants;
-import com.santosh.orderlocationpopup.models.Location;
+import com.santosh.orderlocationpopup.models.OrderInfo;
 
 @Configuration
 public class KafkaProducerConfig {
 	
 	@Bean
-	public ProducerFactory<String, Location> producerFactory() {
+	public ProducerFactory<String, OrderInfo> producerFactory() {
 		Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConstants.KAFKA_BROKERS);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -29,7 +29,7 @@ public class KafkaProducerConfig {
 	}
 	
 	@Bean
-    public KafkaTemplate<String, Location> kafkaTemplate() {
+    public KafkaTemplate<String, OrderInfo> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

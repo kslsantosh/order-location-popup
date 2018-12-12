@@ -4,15 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import com.santosh.orderlocationpopup.models.Location;
+import com.santosh.orderlocationpopup.models.OrderInfo;
 
 @Component
 public class KafkaProducer {
 	
 	@Autowired
-	private KafkaTemplate<String, Location> kafkaTemplate;
+	private KafkaTemplate<String, OrderInfo> kafkaTemplate;
 	
-	public void send(String topic, Location location) {
+	public void send(String topic, OrderInfo location) {
 		kafkaTemplate.send(topic, location);
 		System.out.println("Producer latitude : "+location.getLatitude());
         System.out.println("Producer longitude : "+location.getLongitude());

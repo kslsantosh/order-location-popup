@@ -1,6 +1,6 @@
 package com.santosh.orderlocationpopup.models;
 
-public class Location {
+public class OrderInfo {
 	Double latitude;
 	Double longitude;
 	

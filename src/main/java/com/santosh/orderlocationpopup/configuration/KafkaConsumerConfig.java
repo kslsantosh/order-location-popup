@@ -14,24 +14,24 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import com.santosh.orderlocationpopup.constants.KafkaConstants;
-import com.santosh.orderlocationpopup.models.Location;
+import com.santosh.orderlocationpopup.models.OrderInfo;
 
 @EnableKafka
 @Configuration
 public class KafkaConsumerConfig {
 	@Bean
-    public ConsumerFactory<String, Location> consumerFactory() {
+    public ConsumerFactory<String, OrderInfo> consumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConstants.KAFKA_BROKERS);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, KafkaConstants.CLIENT_ID);
         
-        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Location.class));
+        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(OrderInfo.class));
     }
 	
 	@Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Location> kafkaListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, OrderInfo> kafkaListenerContainerFactory() {
     
-        ConcurrentKafkaListenerContainerFactory<String, Location> factory = new ConcurrentKafkaListenerContainerFactory<>();
+        ConcurrentKafkaListenerContainerFactory<String, OrderInfo> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         
         return factory;

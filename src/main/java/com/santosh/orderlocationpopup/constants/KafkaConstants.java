@@ -19,4 +19,5 @@ public interface KafkaConstants {
 	public static String OFFSET_RESET_EARLIER="earliest";
 	
 	public static Integer MAX_POLL_RECORDS=1;
+	
 }
