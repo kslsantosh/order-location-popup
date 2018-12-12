@@ -19,7 +19,7 @@ import com.santosh.orderlocationpopup.models.Location;
 public class KafkaProducerConfig {
 	
 	@Bean
-	public ProducerFactory<String, String> producerFactory() {
+	public ProducerFactory<String, Location> producerFactory() {
 		Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConstants.KAFKA_BROKERS);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -29,7 +29,7 @@ public class KafkaProducerConfig {
 	}
 	
 	@Bean
-    public KafkaTemplate<String, String> kafkaTemplate() {
+    public KafkaTemplate<String, Location> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

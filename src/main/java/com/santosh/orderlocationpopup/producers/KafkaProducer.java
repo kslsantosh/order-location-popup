@@ -10,10 +10,12 @@ import com.santosh.orderlocationpopup.models.Location;
 public class KafkaProducer {
 	
 	@Autowired
-	private KafkaTemplate<String, String> kafkaTemplate;
+	private KafkaTemplate<String, Location> kafkaTemplate;
 	
-	public void send(String topic, String payload) {
-		kafkaTemplate.send(topic, payload);
-        System.out.println("Message: "+payload+" sent to topic: "+topic);
+	public void send(String topic, Location location) {
+		kafkaTemplate.send(topic, location);
+		System.out.println("Producer latitude : "+location.getLatitude());
+        System.out.println("Producer longitude : "+location.getLongitude());
+        System.out.println("Message: "+location+" sent to topic: "+topic);
     }
 }

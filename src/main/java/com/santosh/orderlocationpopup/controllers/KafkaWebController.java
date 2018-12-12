@@ -15,7 +15,7 @@ public class KafkaWebController {
 	KafkaProducer kafkaSender;
 
     @PostMapping("/kafka/{topicName}")
-    public String sendToTopic(@PathVariable String topicName, @RequestBody String location) {
+    public String sendToTopic(@PathVariable String topicName, @RequestBody Location location) {
     	kafkaSender.send(topicName, location);
         return "Message sent";
     }

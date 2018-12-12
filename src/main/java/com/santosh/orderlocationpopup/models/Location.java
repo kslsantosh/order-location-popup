@@ -1,19 +1,19 @@
 package com.santosh.orderlocationpopup.models;
 
 public class Location {
-	Long latittude;
-	Long longitude;
+	Double latitude;
+	Double longitude;
 	
-	public Long getLatittude() {
-		return latittude;
+	public Double getLatitude() {
+		return latitude;
 	}
-	public void setLatittude(Long latittude) {
-		this.latittude = latittude;
+	public void setLatitude(Double latittude) {
+		this.latitude = latittude;
 	}
-	public Long getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(Long longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 }
