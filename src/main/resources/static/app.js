@@ -1,5 +1,18 @@
 var stompClient = null;
 var markers = [];
+// var contentString = '<div id="content">'+
+//         '<div id="siteNotice">'+
+//         '</div>'+
+//         '<h1 id="firstHeading" class="firstHeading">Licious</h1>'+
+//         '<div id="bodyContent">'+
+//         '<p><b>Santosh</b>, Bengaluru </p>'+
+//         '</div>'+
+//         '</div>';
+
+//var contentString = '<div id="content" class="center"> <span class="popover above">Hey bro, cool popover!</span></div>'
+//var contentString = '<p id="hook">Hello World!</p>'
+//var contentString = '<div class="popover left in" role="tooltip" display: block; opacity: 1; transform-origin: 50% 50% 0px;"><div class="arrow" style="top: 50%;"></div><h3 class="popover-title">Popover on left</h3><div class="popover-content">Vivamus sagittis lacus vel augue laoreet rutrum faucibus.</div></div>'
+var contentString = '<div class="bs-callout bs-callout-info" style="margin:0px" id="callout-type-dl-truncate"> <h4>Santosh</h4> <p>Licious Order</p> </div>'
 
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
@@ -38,17 +51,37 @@ function sendName() {
 }
 
 function showGreeting(message) {
-    console.log("latitude")
-    console.log(message["latitude"])
-    console.log("longitude")
-    console.log(message["longitude"])
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 120,
+        maxHeight:20
+    });
+
     myLatLng = {lat: message["latitude"], lng: message["longitude"]}
     // myLatLng = {lat: -25.363, lng: 131.044};
-    markers.push(new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    animation: google.maps.Animation.DROP
-    }));
+    // var marker = markers.push(new google.maps.Marker({
+    // position: myLatLng,
+    // map: map,
+    // Title: "Santosh",
+    // icon: {
+	// 	url: "pin.svg",
+	// 	scaledSize: new google.maps.Size(40, 40)
+	// },
+    // animation: google.maps.Animation.DROP
+    // }));
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        Title: "Santosh",
+        icon: {
+            url: "pin.svg",
+            scaledSize: new google.maps.Size(40, 40)
+        },
+        animation: google.maps.Animation.DROP
+    });
+    setTimeout(function () { infowindow.open(map, marker); }, 1000);
+    setTimeout(function () { infowindow.close(); }, 2000);
+    
 }
 
 $(function () {
@@ -66,4 +99,3 @@ window.initMap = function  initMap() {
         center: myLatLng
     });
 }
-
