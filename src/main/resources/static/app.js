@@ -58,29 +58,45 @@ function showGreeting(message) {
     });
 
     myLatLng = {lat: message["latitude"], lng: message["longitude"]}
-    // myLatLng = {lat: -25.363, lng: 131.044};
-    // var marker = markers.push(new google.maps.Marker({
-    // position: myLatLng,
-    // map: map,
-    // Title: "Santosh",
-    // icon: {
-	// 	url: "pin.svg",
-	// 	scaledSize: new google.maps.Size(40, 40)
-	// },
-    // animation: google.maps.Animation.DROP
-    // }));
+    // BLR
     var marker = new google.maps.Marker({
         position: myLatLng,
-        map: map,
-        Title: "Santosh",
+        map: map1,
+        label: "Santosh",
         icon: {
             url: "pin.svg",
             scaledSize: new google.maps.Size(40, 40)
         },
         animation: google.maps.Animation.DROP
     });
-    setTimeout(function () { infowindow.open(map, marker); }, 1000);
-    setTimeout(function () { infowindow.close(); }, 2000);
+    // setTimeout(function () { infowindow.open(map1, marker); }, 1000);
+    // setTimeout(function () { infowindow.close(); }, 2000);
+    // HYD
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map2,
+        label: "Santosh",
+        icon: {
+            url: "pin.svg",
+            scaledSize: new google.maps.Size(40, 40)
+        },
+        animation: google.maps.Animation.DROP
+    });
+    // setTimeout(function () { infowindow.open(map2, marker); }, 1000);
+    // setTimeout(function () { infowindow.close(); }, 2000);
+    // NCR
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map3,
+        label: "Santosh",
+        icon: {
+            url: "pin.svg",
+            scaledSize: new google.maps.Size(40, 40)
+        },
+        animation: google.maps.Animation.DROP
+    });
+    // setTimeout(function () { infowindow.open(map3, marker); }, 1000);
+    // setTimeout(function () { infowindow.close(); }, 2000);
     
 }
 
@@ -93,9 +109,20 @@ $(function () {
 
 window.initMap = function  initMap() {
     console.log("------Inside initMap()-----")
-    var myLatLng = {lat: 20.7865394, lng: 77.62864351};
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 5,
-        center: myLatLng
+    var blrLatLng = {lat: 12.9716, lng: 77.5946};
+    var hydLatLng = {lat: 17.385044, lng: 78.486671};
+    var ncrLatLng = {lat: 28.4595, lng: 77.0266};
+    
+    map1 = new google.maps.Map(document.getElementById('map1'), {
+        zoom: 10.5,
+        center: blrLatLng
+    });
+    map2 = new google.maps.Map(document.getElementById('map2'), {
+        zoom: 10.5,
+        center: hydLatLng
+    });
+    map3 = new google.maps.Map(document.getElementById('map3'), {
+        zoom: 9.75,
+        center: ncrLatLng
     });
 }
